@@ -1,0 +1,8 @@
+<p>
+  song works!
+</p>
+<div class="text-center" *ngFor="let music of this.songService.albumchoisi.songs">
+
+ <h3 > <a [routerLink]="['/ytb',music.id]"> {{music.name}} </a> </h3> 
+  
+</div>

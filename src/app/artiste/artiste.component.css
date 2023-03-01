@@ -1,0 +1,17 @@
+.add-card {
+    width: 450px;
+   margin: 0px;
+   padding-right: 50px;
+  }
+
+.artist-card {
+margin-left:50px;
+  max-width: 300px;
+  margin-top: 40px;
+
+}     
+.boite{
+
+ display: flex;
+ flex-wrap: wrap;
+}     

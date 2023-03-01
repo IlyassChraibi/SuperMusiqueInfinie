@@ -1,0 +1,13 @@
+<p>
+  album works!
+</p>
+
+<div class=" container boite">
+  <mat-card class="album-card" *ngFor="let album of this.albumService.albums"  >
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title><a (click)="songService.setAlbum(album)" [routerLink]="['/song',album.id]"> {{album.name}} </a></mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{album.src}}" alt="album">
+  </mat-card>
+</div>

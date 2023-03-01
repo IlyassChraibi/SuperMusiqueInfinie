@@ -1,0 +1,16 @@
+
+.mat-card {
+    margin: 5px;
+}
+
+.album-card {
+margin-left:50px;
+  max-width: 300px;
+  margin-top: 40px;
+
+}     
+.boite{
+
+ display: flex;
+ flex-wrap: wrap;
+}   

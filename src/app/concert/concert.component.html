@@ -1,0 +1,31 @@
+<p>
+  concert works!
+</p>
+
+<div class=" container boite">
+<mat-card class="concert-card" *ngFor="let concert of this.concertService.concerts">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>{{concert.name}}</mat-card-title>
+    <mat-card-subtitle>{{concert.datetime}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <google-map
+  [center]="concert.marker"
+  [zoom]="zoom"
+  width="250"
+  height="300">
+  
+  <map-marker 
+    [position]="concert.marker">
+  </map-marker>
+
+</google-map>
+ 
+  <mat-card-content>
+    <p>
+      {{concert.city}},{{concert.country}}
+    </p>
+  </mat-card-content>
+</mat-card>
+</div>
