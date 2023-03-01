@@ -38,9 +38,6 @@ setAlbum(albumRecu:Album){
   this.albumchoisi = albumRecu;
   console.log(this.albumchoisi);
   
-
-
-
 }
 
 }

@@ -18,8 +18,6 @@ export class SongComponent implements OnInit {
     this.searchSong();
   }
 
-
-
   searchSong(){
     this.songService.getSongs(this.songService.albumchoisi);
 }

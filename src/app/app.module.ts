@@ -41,7 +41,7 @@ import { YoutubeComponent } from './youtube/youtube.component';
       {path: 'artiste/:artisteId', component: AlbumComponent},
       {path: 'concert/:artisteName', component: ConcertComponent},
       {path: 'song/:albumId', component: SongComponent},
-      {path: 'ytb/:songId', component: YoutubeComponent},
+      {path: 'ytb/:songName', component: YoutubeComponent},
     ]),
     BrowserAnimationsModule,
     HttpClientModule,
