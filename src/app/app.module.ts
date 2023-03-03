@@ -15,7 +15,6 @@ import { AlbumComponent } from './album/album.component';
 import { ConcertComponent } from './concert/concert.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { SongComponent } from './song/song.component';
-import { YoutubeComponent } from './youtube/youtube.component';
 
 @NgModule({
   declarations: [						
@@ -24,8 +23,6 @@ import { YoutubeComponent } from './youtube/youtube.component';
       AlbumComponent,
       ConcertComponent,
       SongComponent,
-      YoutubeComponent,
-      YoutubeComponent
    ],
   imports: [
     BrowserModule,
@@ -41,7 +38,6 @@ import { YoutubeComponent } from './youtube/youtube.component';
       {path: 'artiste/:artisteId', component: AlbumComponent},
       {path: 'concert/:artisteName', component: ConcertComponent},
       {path: 'song/:albumId', component: SongComponent},
-      {path: 'ytb/:songName', component: YoutubeComponent},
     ]),
     BrowserAnimationsModule,
     HttpClientModule,

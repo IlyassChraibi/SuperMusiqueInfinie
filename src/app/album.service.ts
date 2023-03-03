@@ -13,7 +13,7 @@ constructor(public http: HttpClient) { }
 
 albums: Album[] = [];
 spotifyToken = localStorage.getItem("token");
-
+artisteAlb : string =""
 
 
 getAlbums(artistId : string): void {
@@ -28,6 +28,8 @@ getAlbums(artistId : string): void {
     .subscribe(response => {
       this.albums = [];
       console.log(response);
+      this.artisteAlb = response.items[0].artists[0].name;
+      console.log(this.artisteAlb);
       response.items.forEach((album:any) => {
         this.albums.push(new Album(album.id, album.name, album.images[0].url));
       });

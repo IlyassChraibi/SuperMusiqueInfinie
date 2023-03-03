@@ -26,7 +26,7 @@ getSongs(album: Album): void {
   this.http.get<any>(`https://api.spotify.com/v1/albums/${album.id}`, httpOptions)
     .subscribe(response => {
       album.songs = [];
-      console.log(response);
+      console.log("les chansons "+response);
       response.tracks.items.forEach((track:any) => {
         album.songs.push(new Song(track.id, track.name));
       });
