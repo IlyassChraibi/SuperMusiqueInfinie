@@ -45,11 +45,17 @@ getArtist(artistname : string): void {
       'Authorization': 'Bearer ' + this.spotifyToken
     })
   };
+for(let a of this.listeArtistes)
+{
+  if(a.name.toLowerCase() == artistname.toLowerCase())
+  {
+    return;
+  }
+}
   
   this.http.get<any>('https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' + artistname, httpOptions)
     .subscribe(response => {
       console.log(response);
-
      this.nouvelArtiste = new Artiste(response.artists.items[0].name,response.artists.items[0].images[0].url,response.artists.items[0].id)
     this.listeArtistes.push(this.nouvelArtiste);
     console.log(this.listeArtistes);

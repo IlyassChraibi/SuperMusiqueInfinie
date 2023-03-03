@@ -13,9 +13,11 @@ constructor(public http: HttpClient) { }
 
 albumchoisi !: Album;
 
+songs : Song[] = [];
+
 spotifyToken = localStorage.getItem("token");
 
-getSongs(album: Album): void {
+getSongs(albumId: string): void {
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -23,12 +25,11 @@ getSongs(album: Album): void {
     })
   };
 
-  this.http.get<any>(`https://api.spotify.com/v1/albums/${album.id}`, httpOptions)
+  this.http.get<any>(`https://api.spotify.com/v1/albums/${albumId}`, httpOptions)
     .subscribe(response => {
-      album.songs = [];
       console.log("les chansons "+response);
       response.tracks.items.forEach((track:any) => {
-        album.songs.push(new Song(track.id, track.name));
+        this.songs.push(new Song(track.id, track.name));
       });
     });
 }

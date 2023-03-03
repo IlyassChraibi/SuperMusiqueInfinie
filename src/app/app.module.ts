@@ -15,14 +15,16 @@ import { AlbumComponent } from './album/album.component';
 import { ConcertComponent } from './concert/concert.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { SongComponent } from './song/song.component';
+import { MyPipePipe } from './my-pipe.pipe';
 
 @NgModule({
-  declarations: [						
+  declarations: [								
     AppComponent,
       ArtisteComponent,
       AlbumComponent,
       ConcertComponent,
       SongComponent,
+      MyPipePipe
    ],
   imports: [
     BrowserModule,

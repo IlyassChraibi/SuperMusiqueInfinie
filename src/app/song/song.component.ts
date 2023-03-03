@@ -6,6 +6,7 @@ import { AlbumService } from '../album.service';
 import { GoogleService } from '../google.service';
 import { SongService } from '../song.service';
 import { ShareConfig } from 'rxjs';
+import { MyPipePipe } from '../my-pipe.pipe';
 
 const youtubeURL = "https://www.youtube.com/embed/";
 @Component({
@@ -38,12 +39,13 @@ export class SongComponent implements OnInit {
   getSafeUrl() : SafeResourceUrl{
     // Remplissez la variable this.videoUrl avec l'URL de la vidéo à afficher MAIS n'oubliez pas de "sanitize" l'URL.
     // Il vous suffira de concaténer la constante youtubeURL avec this.videoId puis de sanitizer.
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(youtubeURL + this.videoId);
+    this.videoUrl = youtubeURL + this.videoId;
     return this.videoUrl;
   }
   
    searchSong(){
-     this.songService.getSongs(this.songService.albumchoisi);
+  this.songService.getSongs(this.idAlb);
+
 }
 
 }

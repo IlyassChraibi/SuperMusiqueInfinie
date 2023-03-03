@@ -20,7 +20,7 @@ getConcerts(artisteName : string){
     console.log(response);
     response.forEach((concert:any) => {
       var markerPositions: google.maps.LatLngLiteral = 
-        {lat:Number.parseInt(concert.venue.latitude), lng: Number.parseInt(concert.venue.longitude)};
+        {lat:Number.parseFloat(concert.venue.latitude), lng: Number.parseFloat(concert.venue.longitude)};
       this.concerts.push(new Concert(concert.venue.name, concert.venue.city, concert.venue.country, 
         concert.venue.street_address, concert.datetime, markerPositions));
     });
