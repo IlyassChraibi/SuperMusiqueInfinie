@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Artiste } from './artiste';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ connect(): void {
     });
 }
 
-getArtist(artistname : string): void {
+ async getArtist(artistname : string): Promise<void> {
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -52,13 +53,21 @@ for(let a of this.listeArtistes)
     return;
   }
 }
-  
+  let x = await lastValueFrom(this.http.get<any>('https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' + artistname, 
+  httpOptions))
+
+  console.log(x);
+
+  this.nouvelArtiste = new Artiste(x.artists.items[0].name,x.artists.items[0].images[0].url,x.artists.items[0].id)
+    this.listeArtistes.push(this.nouvelArtiste);
+    console.log(this.listeArtistes);
+/*
   this.http.get<any>('https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' + artistname, httpOptions)
     .subscribe(response => {
       console.log(response);
      this.nouvelArtiste = new Artiste(response.artists.items[0].name,response.artists.items[0].images[0].url,response.artists.items[0].id)
     this.listeArtistes.push(this.nouvelArtiste);
     console.log(this.listeArtistes);
-    });
+    });*/
 }
 } 

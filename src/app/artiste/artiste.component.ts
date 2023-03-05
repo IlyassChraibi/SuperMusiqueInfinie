@@ -12,30 +12,19 @@ export class ArtisteComponent implements OnInit {
   constructor(public artisteService : ArtisteService) { }
 
   artistNom : string = "";
-  estDansLaListe:boolean = false;
+  jsonData !: string;
 
   ngOnInit(): void{  
     this.artisteService.connect();
+    this.jsonData = localStorage.getItem("listeA")!;
+    this.artisteService.listeArtistes = JSON.parse(this.jsonData);
   }
 
-  /*check():boolean{
-    this.estDansLaListe = false;
-    if(this.artisteService.listeArtistes.length>0){
-    this.artisteService.listeArtistes.forEach(artiste => {
-      if(artiste.name === this.artistNom){
-
-       this.estDansLaListe = true;
-      
-      }
-    }); 
-  }
-  return this.estDansLaListe
-}*/
-
-  search(){
+  async search() : Promise<void>{
     if(this.artistNom != '')
     {
-      this.artisteService.getArtist(this.artistNom);
+      await this.artisteService.getArtist(this.artistNom);
     }
+    localStorage.setItem("listeA", JSON.stringify(this.artisteService.listeArtistes));
   }
 }
