@@ -9,13 +9,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AlbumComponent } from './album/album.component';
 import { ConcertComponent } from './concert/concert.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { SongComponent } from './song/song.component';
 import { MyPipePipe } from './my-pipe.pipe';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [								
@@ -43,9 +45,21 @@ import { MyPipePipe } from './my-pipe.pipe';
     ]),
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps:[HttpClient]
+      }
+      })
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http);
+}

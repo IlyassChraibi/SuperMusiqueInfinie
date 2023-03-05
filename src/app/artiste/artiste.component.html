@@ -1,15 +1,23 @@
 <p>
   artiste works!
 </p>
-<mat-card class="add-card mat-card">
 
+<div class="col-3">
+<div class="form">
+  <button class="btn btn-light form-control" (click)="changeLanguage('fr')">Français</button><br><br>
+  <button class="btn btn-light form-control" (click)="changeLanguage('en')">English</button><br>
+</div>
+</div>
+
+<mat-card class="add-card mat-card">
+  <div>{{'artiste.ajouterArtiste' | translate}}</div>
   <mat-form-field  class="add-card" appearance="standard">
-    <mat-label>Nouvel artiste </mat-label>
+    <mat-label>{{'artiste.nv' | translate}} </mat-label>
     <input  matInput placeholder="Nouvel artiste" [(ngModel)]="artistNom" >
   </mat-form-field>
 
   <mat-card-actions>
-    <button mat-raised-button (click)="search()" type="submit">Ajouter</button>
+    <button mat-raised-button (click)="search()" type="submit">{{'artiste.ajouter' | translate}}</button>
   </mat-card-actions>
 
 </mat-card>

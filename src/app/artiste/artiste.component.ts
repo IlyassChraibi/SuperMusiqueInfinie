@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Artiste } from '../artiste';
 import { ArtisteService } from '../artiste.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-artiste',
@@ -9,14 +10,23 @@ import { ArtisteService } from '../artiste.service';
 })
 export class ArtisteComponent implements OnInit {
 
-  constructor(public artisteService : ArtisteService) { }
-
+  
   artistNom : string = "";
   jsonData !: string;
+  language : string = "fr";
+
+  constructor(public artisteService : ArtisteService,public translator : TranslateService) { 
+    translator.setDefaultLang(this.language);
+  }
+
+  changeLanguage(lang : string): void {
+    this.language = lang;
+    this.translator.use(this.language);
+}
 
   ngOnInit(): void{  
     this.artisteService.connect();
-    this.jsonData = localStorage.getItem("listeA")!;
+    this.jsonData = localStorage.getItem("listeA") || "";
     this.artisteService.listeArtistes = JSON.parse(this.jsonData);
   }
 
